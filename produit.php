@@ -102,3 +102,12 @@ function afficher_label(){
 	return $req;
 
 }
+
+function afficher_marque(){
+	//fonction pour afficher les checkbox des filtres en allant cherher l'id et le nom du critère
+	global $pdo;
+
+	$req = $pdo->query('SELECT * FROM marque');
+	return $req;
+
+}

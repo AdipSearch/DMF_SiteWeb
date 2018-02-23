@@ -11,7 +11,7 @@
 	<!-- CSS Vendor -->
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all" />
 	<!-- CSS Perso -->
-	<link rel="stylesheet" type="text/css" href="css/DMFstyle.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
 	<?php include 'produit.php'; ?>
 <script
   src="http://code.jquery.com/jquery-3.3.1.js"
