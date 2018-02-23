@@ -42,30 +42,47 @@
 						?> <p>
 						<input type="checkbox" name="critere[]" value="<?php echo $donnees['idcritere']?>" id="<?php echo $donnees['idcritere']?>" /> <label for="<?php echo $donnees['idcritere']?>"><?php echo $donnees['nom_critere']?></label> <!-- on donne le même name à tous les champs, ce nom est un tableau critere. On modifie la value par le nom du critere qu'on veut afficher --> 
 						</p>
-					<?php } ?>
+					<?php 
+					} ?>
 
 
 
 				<input type="submit" value="Envoyer" />
 				
 		<?php
-			$req = filtrer_produit();
-			while ($donnees = $req->fetch()) { //affiche les réponses de la requête jusqu'au dernier résultat
-			?>
-				<p>
-				 Chaussure <?php echo $donnees['nom_produit']; ?>, de type <?php echo $donnees['type']; ?><br />
-				 Vous la trouverez en suivant ce lien : <a href="<?php echo $donnees['lien']; ?>">lien</a><br />
-				 Description du produit : <?php echo $donnees['description']; ?><br />
-				 Photo du produit : <img src="<?php echo $donnees['photo']; ?>"><br />
-				</p>
-			<?php
-			}
+			if (!isset($_GET['critere'])) { //si aucun critère n'est coché, la page affiche tous les produits
+						$req = afficher_produit();
+						while ($donnees = $req->fetch()) { //affiche les réponses de la requête jusqu'au dernier résultat
+						?>
+							<p>
+							 Chaussure <?php echo $donnees['nom_produit']; ?>, de type <?php echo $donnees['type']; ?><br />
+							 Vous la trouverez en suivant ce lien : <a href="<?php echo $donnees['lien']; ?>">lien</a><br />
+							 Description du produit : <?php echo $donnees['description']; ?><br />
+							 Photo du produit : <img src="<?php echo $donnees['photo']; ?>"><br />
+							</p>
+						<?php
+						};
+					}
+				else {
+					$req = filtrer_produit();
+					while ($donnees = $req->fetch()) { //affiche les réponses de la requête jusqu'au dernier résultat
+					?>
+						<p>
+						 Chaussure <?php echo $donnees['nom_produit']; ?>, de type <?php echo $donnees['type']; ?><br />
+						 Vous la trouverez en suivant ce lien : <a href="<?php echo $donnees['lien']; ?>">lien</a><br />
+						 Description du produit : <?php echo $donnees['description']; ?><br />
+						 Photo du produit : <img src="<?php echo $donnees['photo']; ?>"><br />
+						</p>
+					<?php
+					}
 
-			if (!$req->rowCount()) { //vérifie qu'il y ait des produits qui correspondent aux critères sélectionnés
-				?>
-				<p>Aucun produit ne correspond à ce(s) critère(s) ! </p>
-				<?php 
-			}
+					if (!$req->rowCount()) { //vérifie qu'il y ait des produits qui correspondent aux critères sélectionnés
+						?>
+						<p>Aucun produit ne correspond à ce(s) critère(s) ! </p>
+						<?php 
+					}
+				}
+
 		?>
 
 
@@ -85,7 +102,7 @@
 										<!--  FOOTER -->
 
 <footer>
-	<? include('footer_view.php') ?>
+	<?php include('footer_view.php') ?>
 </footer>
 <script src="js/bootstrap.js"></script>
 </body>

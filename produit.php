@@ -8,11 +8,6 @@ function filtrer_produit() { //fonction permettant de filtrer les produits grâc
 
 		$query = 'SELECT * FROM produits';
 		$i=1;
-		/*if(!($_GET['critere'])) { //gère si aucun critere n'est selectionne
-		$query = NULL;
-		return $query;
-		}
-		else{*/
 			foreach($_GET['critere'] as $critere) { //parcours le tableau critere faisant référence aux checkbox critere
 				$query .=  " INNER JOIN produits_has_critere AS phc$i ON produits.idProduits = phc$i.produits_idProduits AND phc$i.critere_idcritere = ?"; //pour afficher uniquement les produits cumulant les critere selectionnes
 				$i++;
@@ -24,7 +19,7 @@ function filtrer_produit() { //fonction permettant de filtrer les produits grâc
 			$req->execute($_GET['critere']);
 		}
 	} catch (Exception $e) {
-		var_dump($e);
+		//var_dump($e);
 	}
 	return $req;
 };
