@@ -25,7 +25,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-md-6">
 		
-				<fieldset>
+				<fieldset id="fieldset_label">
 						  			<legend>Labels:</legend>
 									
 					<?php				$req = afficher_label();
@@ -36,13 +36,13 @@
 					<?php 
 					} ?>
 
-									<input type="checkbox"  name="label[]" value="1" id="fairtrade">
+									<!--<input type="checkbox"  name="label[]" value="1" id="fairtrade">
 									<label for="fairtrade"><img  class="logo" src="img/fairtrade-logo B&W.png" alt="logo commerce équitable"></label>
 
 									<input type="checkbox"  name="label[]" value="2" id="fairwear">
 									<label for="fairwear"><img class="logo" src="img/fair-wear-foundation-logo.png" alt="Logo Habits équitables"></label>
 									<input type="checkbox" name="label[]" value="3" id="gots">
-									<label for="gots"><img  class="logo" src="img/gots-1 copie b&w .png" alt="Logo GOTS"></label>
+									<label for="gots"><img  class="logo" src="img/gots-1 copie b&w .png" alt="Logo GOTS"></label>-->
 				</fieldset>
 
 				<fieldset>
