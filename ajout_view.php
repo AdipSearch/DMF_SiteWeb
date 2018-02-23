@@ -27,45 +27,61 @@
 				<div class="col-xs-12 col-md-6">
 
 					<fieldset>
+
+						<legend>Nom du produit</legend>
+
+
+						<input type="text" name="nom_produit">
+						<small class="form-text text-muted"></small>
+
+						<label for="nom_produit" ></label>
+					</fieldset>
+
+					<fieldset>
 						<legend>Labels:</legend>
 
-						<?php				$req = afficher_label();
-					while ($donnees = $req->fetch()) { //affiche les réponses de la requête jusqu'au dernier résultat
-					?> <div>
-						<input type="checkbox" name="label[]" value="<?php echo $donnees['idLabel']?>" id="<?php echo $donnees['idLabel']?>" /> <label class="label" for="<?php echo $donnees['idLabel']?>"><img class="logo_img" src="img/<?php echo $donnees['logo_label']?>" alt="logo_label"></label> <!-->Affiche tous les labels de la base de données</!-->
-					</div>
-					<?php 
-				} ?>
+						<?php $req = afficher_label();
+						while ($donnees = $req->fetch()) { // affiche les réponses de la requête jusqu'au dernier résultat?>
 
-			</fieldset>
-
-			<fieldset>
-
-				<legend>Ajout de Mots clés:</legend>
-
-
-				<input type="text" name="keyword">
-				<small class="form-text text-muted"><em>(Ex: Chaussures, Stan Smith,...)</em></small>
-
-				<label for="keyword" ></label>
-			</fieldset>
-
-		</div>
+						<div>
+							<input type="checkbox" name="label[]" value="<?php echo $donnees['idLabel']?>" id="<?php echo $donnees['idLabel']?>"/> 
+							<label class="label" for="<?php echo $donnees['idLabel']?>"> 
+								<img class="logo_img" src="img/<?php echo $donnees['logo_label']?>" alt="logo_label"> 
+							</label> <!--Affiche tous les labels de la base de données-->
+						</div>
+						<?php 
+					} ?>
+				</fieldset>
 
 
-		<!--URLPICTURE LISTE MARQUE LINE-->		
 
-		<div class="col-xs-12 col-md-6">
+				<fieldset>
 
-			<!-- LISTE MARQUE -->
-			<fieldset>
-				<legend>Indiquez la Marque du produit</legend>
-				<label for="marque"></label>
-				<select name="marque" id="marque">
-					<?php				$req = afficher_marque();
+					<legend>Ajout de Mots clés:</legend>
+
+
+					<input type="text" name="keyword">
+					<small class="form-text text-muted"><em>(Ex: Chaussures, Stan Smith,...)</em></small>
+
+					<label for="keyword" ></label>
+				</fieldset>
+
+			</div>
+
+
+			<!--URLPICTURE LISTE MARQUE LINE-->		
+
+			<div class="col-xs-12 col-md-6">
+
+				<!-- LISTE MARQUE -->
+				<fieldset>
+					<legend>Indiquez la Marque du produit</legend>
+					<label for="marque"></label>
+					<select name="marque" id="marque">
+						<?php				$req = afficher_marque();
 					 while ($donnees = $req->fetch()) { //affiche les réponses de la requête jusqu'au dernier résultat
 					 ?> 
-					 	<option value="<?php echo $donnees['idMarque']?>" id="<?php echo $donnees['idMarque']?>"><?php echo $donnees['nom_marque']?></option> <!-->Affiche toutes les marques de la base de données dans la liste déroulante</!-->
+					 <option value="<?php echo $donnees['idMarque']?>" id="<?php echo $donnees['idMarque']?>"><?php echo $donnees['nom_marque']?></option> <!--Affiche toutes les marques de la base de données dans la liste déroulante-->
 					 
 					 <?php 
 					} ?>
@@ -93,13 +109,19 @@
 
 				<legend>Critères:</legend>
 
-				<?php				$req = afficher_filtre();
-					while ($donnees = $req->fetch()) { //affiche les réponses de la requête jusqu'au dernier résultat
-					?> <div>
-						<input type="checkbox" name="critere[]" value="<?php echo $donnees['idcritere']?>" id="<?php echo $donnees['idcritere']?>" /> <label class="label" for="<?php echo $donnees['idcritere']?>"><?php echo $donnees['nom_critere']?></label> <!-->Affiche tous les critères de la base de données</!-->
-					</div>
-					<?php 
-				} ?>
+				<?php $req = afficher_filtre();
+				while ($donnees = $req->fetch()) { //affiche les réponses de la requête jusqu'au dernier résultat?>
+				<div>
+					<input type="checkbox" name="critere[]" value="<?php echo $donnees['idcritere']?>" id="<?php echo $donnees['idcritere']?>" /> 
+					<label class="label" for="<?php echo $donnees['idcritere']?>">
+						<?php echo $donnees['nom_critere']?>
+
+					</label> <!--Affiche tous les critères de la base de données-->
+				</div>
+
+				<?php 
+					} ?>
+
 			</fieldset>
 
 		</div>

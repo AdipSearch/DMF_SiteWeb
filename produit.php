@@ -64,6 +64,26 @@ function inserer_produit(){
 	return $req;
 };
 
+function inserer_no_label($idProduit){
+	global $pdo;
+	$sql = $pdo->prepare('INSERT INTO DMF.produits_has_label(label_idLabel, produits_idProduits) VALUES (:labelid, :produitid)');
+
+	$sql -> bindParam(':produitid', $idProduit);
+	$sql -> bindParam(':labelid', 4);
+		$req = $sql->execute();
+
+};
+
+function inserer_no_critere($idProduit){
+	global $pdo;
+	$sql = $pdo->prepare('INSERT INTO DMF.produits_has_critere(critere_idcritere, produits_idProduits) VALUES (:critereid, :produitid)');
+
+	$sql -> bindParam(':produitid', $idProduit);
+	$sql -> bindParam(':critereid', 4);
+		$req = $sql->execute();
+
+};
+
 function inserer_label($idProduit, $labels){
 	global $pdo;
 	$sql = $pdo->prepare('INSERT INTO DMF.produits_has_label(label_idLabel, produits_idProduits) VALUES (:labelid, :produitid)');
@@ -71,6 +91,7 @@ function inserer_label($idProduit, $labels){
 	$sql -> bindParam(':produitid', $idProduit);
 
 	//parcours le tableau label[] faisant référence aux checkbox label à relier au produit ajouter
+	
 	foreach($labels as $label) { 
 
 		$sql -> bindParam(':labelid', $label);
@@ -86,6 +107,8 @@ function inserer_critere($idProduit, $criteres){
 	$sql -> bindParam(':produitid', $idProduit);
 
 	//parcours le tableau critere[] faisant référence aux checkbox critere à relier au produit ajouté
+	
+	
 	foreach($criteres as $critere) { 
 
 		$sql -> bindParam(':critereid', $critere);
