@@ -1,3 +1,4 @@
+<?php include 'produit.php'; ?>
 <div class="row col-xs-12 justify-content-md-center">
 <button class="btn btn-custom btn-lg" data-toggle="collapse" data-target="#addref">Ajoutez un produit</button>
 </div>
@@ -26,7 +27,14 @@
 		
 				<fieldset>
 						  			<legend>Labels:</legend>
-
+									
+					<?php				$req = afficher_label();
+					while ($donnees = $req->fetch()) { //affiche les réponses de la requête jusqu'au dernier résultat
+						?> <p>
+						<input type="checkbox" name="label[]" value="<?php echo $donnees['idLabel']?>" id="<?php echo $donnees['idLabel']?>" /> <label for="<?php echo $donnees['idLabel']?>"><img src="img/<?php echo $donnees['logo_label']?>" alt="logo_label"></label> <!-- on donne le même name à tous les champs, ce nom est un tableau critere. On modifie la value par le nom du critere qu'on veut afficher --> 
+						</p>
+					<?php 
+					} ?>
 
 									<input type="checkbox"  name="label[]" value="1" id="fairtrade">
 									<label for="fairtrade"><img  class="logo" src="img/fairtrade-logo B&W.png" alt="logo commerce équitable"></label>
