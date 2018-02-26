@@ -17,31 +17,22 @@ if(isset($_POST['Go'])){
         //var_dump($_REQUEST['label']);
        if (empty($_REQUEST['critere'])&&empty($_REQUEST['label'])) {
 
-        $_REQUEST['label']=[4];
-        $_REQUEST['critere']=[4];
-
-        inserer_label($id, $_REQUEST['label']);
-
-        inserer_critere($id, $_REQUEST['critere']);
-
         
         echo "Merci pour votre participation";
         header("refresh:3; url= index.php");
 
       }else if (empty($_REQUEST['label'])) {
-        $_REQUEST['label']=[4];
-        inserer_label($id, $_REQUEST['label']);
+       
         inserer_critere($id, $_REQUEST['critere']);
 
         echo "Merci pour votre participation";
         header("refresh:3; url= index.php");
 
       }else if (empty($_REQUEST['critere'])) {
-
-        $_REQUEST['critere']=[4];
+        
         inserer_label($id, $_REQUEST['label']);
 
-        inserer_critere($id, $_REQUEST['critere']);
+
         echo "Merci pour votre participation";
         header("refresh:3; url= index.php");
 
