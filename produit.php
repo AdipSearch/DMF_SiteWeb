@@ -8,27 +8,28 @@ function filtrer_produit() { //fonction permettant de filtrer les produits grâc
 
 		$query = 'SELECT * FROM produits';
 		$i=1;
-			foreach($_GET['critere'] as $critere) { //parcours le tableau critere faisant référence aux checkbox critere
+		foreach($_GET['critere'] as $critere) { //parcours le tableau critere faisant référence aux checkbox critere
 				$query .=  " INNER JOIN produits_has_critere AS phc$i ON produits.idProduits = phc$i.produits_idProduits AND phc$i.critere_idcritere = ?"; //pour afficher uniquement les produits cumulant les critere selectionnes
 				$i++;
 			//}
 
 
+				
+			}
 			$req = $pdo->prepare($query);
 
 			$req->execute($_GET['critere']);
-		}
-	} catch (Exception $e) {
+		} catch (Exception $e) {
 		//var_dump($e);
-	}
-	return $req;
-};
+		}
+		return $req;
+	};
 
 function afficher_filtre() { //fonction pour afficher les checkbox des filtres en allant cherher l'id et le nom du critère
-	global $pdo;
+global $pdo;
 
-	$req = $pdo->query('SELECT * FROM critere');
-	return $req;
+$req = $pdo->query('SELECT * FROM critere');
+return $req;
 };
 
 function afficher_produit() { //fonction pour afficher tous les produits contenus dans la bdd
@@ -43,6 +44,12 @@ function verif_url_exists(){
 	$reqNewUrl->execute([$_POST['url']]);
 	$urlexist = $reqNewUrl->rowCount();
 	return $urlexist;
+};
+
+function recherche_id_aucun(){
+	global $pdo;
+	$idCritereAucun = $pdo->query("SELECT idcritere FROM critere WHERE nom_critere = 'aucun'");
+	$idLabelAucun = $pdo->query("SELECT idLabel FROM label WHERE nom_label = 'aucun'");
 };
 
 function inserer_produit(){
@@ -64,6 +71,26 @@ function inserer_produit(){
 	return $req;
 };
 
+/*function inserer_no_label($idProduit){
+	global $pdo;
+	$sql = $pdo->prepare('INSERT INTO DMF.produits_has_label(label_idLabel, produits_idProduits) VALUES (:labelid, :produitid)');
+
+	$sql -> bindParam(':produitid', $idProduit);
+	$sql -> bindParam(':labelid', 4);
+	$req = $sql->execute();
+
+};
+
+function inserer_no_critere($idProduit){
+	global $pdo;
+	$sql = $pdo->prepare('INSERT INTO DMF.produits_has_critere(critere_idcritere, produits_idProduits) VALUES (:critereid, :produitid)');
+
+	$sql -> bindParam(':produitid', $idProduit);
+	$sql -> bindParam(':critereid', 4);
+	$req = $sql->execute();
+
+};*/
+
 function inserer_label($idProduit, $labels){
 	global $pdo;
 	$sql = $pdo->prepare('INSERT INTO DMF.produits_has_label(label_idLabel, produits_idProduits) VALUES (:labelid, :produitid)');
@@ -71,6 +98,7 @@ function inserer_label($idProduit, $labels){
 	$sql -> bindParam(':produitid', $idProduit);
 
 	//parcours le tableau label[] faisant référence aux checkbox label à relier au produit ajouter
+	
 	foreach($labels as $label) { 
 
 		$sql -> bindParam(':labelid', $label);
@@ -86,6 +114,8 @@ function inserer_critere($idProduit, $criteres){
 	$sql -> bindParam(':produitid', $idProduit);
 
 	//parcours le tableau critere[] faisant référence aux checkbox critere à relier au produit ajouté
+	
+	
 	foreach($criteres as $critere) { 
 
 		$sql -> bindParam(':critereid', $critere);
@@ -93,3 +123,21 @@ function inserer_critere($idProduit, $criteres){
 
 	}
 };
+
+function afficher_label(){
+	//fonction pour afficher les checkbox des filtres en allant cherher l'id et le nom du critère
+	global $pdo;
+
+	$req = $pdo->query('SELECT * FROM label');
+	return $req;
+
+}
+
+function afficher_marque(){
+	//fonction pour afficher les checkbox des filtres en allant cherher l'id et le nom du critère
+	global $pdo;
+
+	$req = $pdo->query('SELECT * FROM marque');
+	return $req;
+
+}

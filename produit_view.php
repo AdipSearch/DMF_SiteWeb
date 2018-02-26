@@ -12,12 +12,14 @@
 	<!-- CSS Vendor -->
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all" />
 	<!-- CSS Perso -->
+
 	<link rel="stylesheet" type="text/css" href="css/style.css?timestamp=<?php echo time() ?> " media="screen" />
 	<script
 	src="http://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 
 	<?php include 'produit.php'; ?>
 
