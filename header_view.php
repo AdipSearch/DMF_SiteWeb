@@ -5,12 +5,13 @@
 	</div>
 		
 			<div class="menuheader">
-				<nav class="headnav">
-				<a href="produit_view.php">Nos produits</a>
-				<a href="nous.php">Qui sommes nous ?</a>
-				<a href="contact_view.php">Contact</a>
-				
+					<nav class="navbar navbar-expand-md headnav">
+					
+				<a class="linkbar" href="produit_view.php">Nos produits</a>
+				<a  class="linkbar" href="nous.php">Qui sommes nous ?</a>
+				<a  class="linkbar" href="contact_view.php">Contact</a>
 				</nav>
+			
 			</div>	
 		
 	

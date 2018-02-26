@@ -27,7 +27,7 @@
 
 	<!-- HEADER -->
 	<header>
-		<?php include('header_view.php') ?>
+		<?php include 'header_view.php' ?>
 	</header>
 	<!-- CONTENU LANDING PAGE -->
 
