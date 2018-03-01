@@ -3,7 +3,7 @@
 ## Objet
 Site web collaboratif pouralimenter une base de données de vêtements éthiques.
 Réalisation en formation Février 2018
-En collaboration avec https://github.com/Captain-Galak / 
+En collaboration avec https://github.com/Captain-Galak / https://github.com/JordanBgt / https://github.com/Fanfnir
 
 ## Apreçu
 
